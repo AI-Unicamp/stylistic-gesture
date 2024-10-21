@@ -54,9 +54,10 @@ def collate(batch):
         vadbatch = [b['vad'] for b in notnone_batches]
         vadbatch = torch.cat(vadbatch, dim=0)
         cond['y'].update({'vad': vadbatch})
-    if 'takename' in notnone_batches[0]:
-        takenamebatch = [b['takename'] for b in notnone_batches]
-        cond['y'].update({'takename': takenamebatch})
+    if 'onehot' in notnone_batches[0]:
+        onehotbatch = [b['onehot'] for b in notnone_batches]
+        onehotbatch = torch.cat(onehotbatch, dim=0)
+        cond['y'].update({'onehot': onehotbatch})
     return motion, cond
 
 # an adapter to our collate func
@@ -70,7 +71,17 @@ def gg_collate(batch):
         'audio_rep': torch.from_numpy(b[4]).float(),        # [1, AUDIO_HID_DIM, 1, CHUNK_LEN] , (AUDIO_HID_DIM = MFCC_DIM or 768)
         'seed': torch.tensor(b[5].T).float().unsqueeze(1),  # [n_seed_poses, J] -> [J, 1, n_seed_poses]
         'vad': torch.from_numpy(b[6]).long(),              # [1, CHUNK_LEN] 
-        'takename': b[7]
     } for b in batch]
     return collate(adapted_batch)
 
+def ptbr_collate(batch):
+    adapted_batch = [{
+        'inp': torch.from_numpy(b[0].T).float().unsqueeze(1),   #b[0] # motion [frames, motion_dim]
+        'seed': torch.from_numpy(b[1].T).float().unsqueeze(1),  #b[1] # seed poses [n_seed_poses, motion_dim]
+        'audio': torch.from_numpy(b[2]).unsqueeze(0),           #b[2] # audio [frames]
+        'vad': torch.from_numpy(b[3]).long(),               #b[3] # vad [frames]
+        'audio_rep': torch.from_numpy(b[4]).float(),        #b[4] # wavlm
+        'sample_data': b[5],                                 #b[5] # sample_data
+        'onehot': torch.from_numpy(b[5][3]).float().unsqueeze(0),           #b[6] # onehot
+    } for b in batch]
+    return collate(adapted_batch)

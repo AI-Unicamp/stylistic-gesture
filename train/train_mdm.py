@@ -31,20 +31,13 @@ def main():
         projectname = os.path.basename(os.path.normpath(args.save_dir))
         import wandb
         wandb.login(anonymous="allow")
-        wandb.init(project='ggvad-genea2023', config=vars(args))
+        wandb.init(project='ptbrgesture', config=vars(args))
         args.wandb = wandb
 
     dist_util.setup_dist(args.device)
 
     print("creating data loader...")
-    data = get_dataset_loader(name=args.dataset, 
-                              data_dir=args.data_dir, 
-                              batch_size=args.batch_size, 
-                              num_frames=args.num_frames, 
-                              step=args.step, 
-                              use_wavlm=args.use_wavlm, 
-                              use_vad=args.use_vad, 
-                              vadfromtext=args.vadfromtext)
+    data = get_dataset_loader(name=args.dataset, batch_size=args.batch_size, num_frames=args.num_frames, step=args.step, use_wavlm=args.use_wavlm, use_vad=args.use_vad, vadfromtext=args.vadfromtext)
 
     print("creating model and diffusion...")
     model, diffusion = create_model_and_diffusion(args, data)

@@ -1,4 +1,5 @@
-from model.mdm import MDM
+#from model.mdm_old import MDM_Old as MDM
+from model.mod_mdm import MDM
 from diffusion import gaussian_diffusion as gd
 from diffusion.respace import SpacedDiffusion, space_timesteps
 
@@ -20,11 +21,11 @@ def get_model_args(args, data):
     # default args
     clip_version = 'ViT-B/32'
 
-    if args.dataset in ['genea2023']:
+    if args.dataset in ['genea2022', 'genea2023']:
         data_rep = 'genea_vec'
         njoints = 498
         nfeats = 1
-    elif args.dataset in ['genea2023+']:
+    elif args.dataset in ['genea2023+', 'ptbr']:
         data_rep = 'genea_vec+'
         njoints = 1245
         nfeats = 1
@@ -35,7 +36,7 @@ def get_model_args(args, data):
             'dropout': 0.1, 'activation': "gelu", 'data_rep': data_rep, 'cond_mask_prob': args.cond_mask_prob, 
             'clip_version': clip_version, 'dataset': args.dataset,
             'use_text': args.use_text, 'mfcc_input': args.mfcc_input, 'use_wavlm': args.use_wavlm, 'use_vad':args.use_vad,
-            'use_wav_enc':args.use_wav_enc, 'seed_poses': args.seed_poses} 
+            'use_wav_enc':args.use_wav_enc, 'seed_poses': args.seed_poses, 'use_style_enc': args.use_style_enc, 'dataloader': data,} 
 
 
 def create_gaussian_diffusion(args):

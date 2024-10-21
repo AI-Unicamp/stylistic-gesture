@@ -9,15 +9,16 @@ warnings.filterwarnings("ignore", category=RuntimeWarning)  # ignore warnings
 
 
 class EmbeddingSpaceEvaluator:
-    def __init__(self, embed_net_path, n_frames, device):
-        # init embed net
-        ckpt = torch.load(embed_net_path, map_location=device)
-        self.pose_dim = ckpt['pose_dim']
-        self.net = EmbeddingNet(self.pose_dim, n_frames).to(device)
-        self.net.load_state_dict(ckpt['gen_dict'])
-        self.net.train(False)
+    def __init__(self, embed_net_path, n_frames, device, dummy=False):
+        if not dummy:
+            # init embed net
+            ckpt = torch.load(embed_net_path, map_location=device)
+            self.pose_dim = ckpt['pose_dim']
+            self.net = EmbeddingNet(self.pose_dim, n_frames).to(device)
+            self.net.load_state_dict(ckpt['gen_dict'])
+            self.net.train(False)
 
-        self.reset()
+            self.reset()
 
     def reset(self):
         self.real_samples = []
@@ -55,7 +56,7 @@ class EmbeddingSpaceEvaluator:
         B_mu = np.mean(samples_B, axis=0)
         B_sigma = np.cov(samples_B, rowvar=False)
         try:
-            print('Computing frechet distance')
+            #print('Computing frechet distance')
             frechet_dist = self.calculate_frechet_distance(A_mu, A_sigma, B_mu, B_sigma)
         except ValueError:
             print('Something went wrong')
@@ -100,7 +101,6 @@ class EmbeddingSpaceEvaluator:
         if not np.isfinite(covmean).all():
             msg = ('fid calculation produces singular product; '
                    'adding %s to diagonal of cov estimates') % eps
-            print(msg)
             offset = np.eye(sigma1.shape[0]) * eps
             covmean = linalg.sqrtm((sigma1 + offset).dot(sigma2 + offset))
         # Numerical error might give slight imaginary component
