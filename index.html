@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents.">
+  <meta name="keywords" content="Stylistic, Gesture, Generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src=""></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', '');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://ai-unicamp.github.io/stylistic-gesture/">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://ai-unicamp.github.io/BRG-Unicamp/">
+            BRG-Unicamp
+          </a>
+          <a class="navbar-item" href="https://github.com/AI-Unicamp/gesture-area-coverage">
+            Gesture Area Coverage
+          </a>
+          <a class="navbar-item" href="https://github.com/ai-unicamp/ggvad-genea2023">
+            GGVAD (GENEA 2023)
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://rltonoli.github.io/">Rodolfo Luis Tonoli</a>,</span>
+            <span class="author-block">
+              <a href="https://pdpcosta.github.io/">Paula Dornhofer Paro Costa</a></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Depto. de Engenharia de Computação e Automação (DCA) </br>
+                Faculdade de Engenharia Elétrica e de Computação (FEEC)</br>
+                Universidade Estadual de Campinas (UNICAMP), Brazil.</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/AI-Unicamp/stylistic-gesture"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://ai-unicamp.github.io/BRG-Unicamp/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="30%">
+        <source src="./static/videos/sample_id02_p01_e03_f21_02500_18475.mp4"
+                type="video/mp4">
+      </video>
+      <h2 class="subtitle has-text-centered">
+        Generate gestures in virtual agenst for unseen audio consistent with the personality and communicative style of the agent.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            This research introduces a framework designed to model personality traits and communicative styles in speech-driven gestures for virtual agents. We present an expressive gesture dataset synchronized with speech audio in Brazilian Portuguese, featuring three personalities and three communicative styles. We introduce a diffusion-based gesture generation model that captures the nuance of gestures based on speech audio input. Objective and perceptual evaluations are employed to assess the naturalness, human-likeness, and appropriateness of the generated gestures, as well as the recognition accuracy of personality and communicative styles. Results demonstrate that our model achieves similar human-likeness and appropriateness to previous state-of-the-art system while producing more expressive gestures. We also provide insights into the challenges of recognising styles based on gestures alone.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Figure. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Diffusion-based model</h2>
+        <img src="./static/images/model.png"
+                   class="interpolation-image"
+                   alt="Diffusion model architecture."/>
+
+        <!-- Interpolating. -->
+        <div class="content has-text-justified">
+          <p>
+            Our model simultaneously generates motion sequences of 120 poses, corresponding to 4 seconds of motion. We employ the pre-trained WavLM and VAD models to extract audio features and take the style as conditional input.
+          </p>
+        </div>
+        
+        <br/>
+
+      </div>
+    </div>
+    <!--/ Figure. -->
+
+
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{tonoli2024stylistic,
+  author    = {Tonoli, Rodolfo L. and Costa, Paula D. P.},
+  title     = {Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents},
+  journal   = {N/A},
+  year      = {N/A},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/ai-unicamp" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template credit to  <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
