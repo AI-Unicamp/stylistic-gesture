@@ -1,5 +1,6 @@
 # stylistic-gesture
 Official repository for the paper Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents.
+[![DOI](https://zenodo.org/badge/876027763.svg)](https://doi.org/10.5281/zenodo.14204495)
 
 ## Preparing environment
 
