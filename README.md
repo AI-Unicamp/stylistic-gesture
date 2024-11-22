@@ -1,6 +1,6 @@
 # stylistic-gesture
 Official repository for the paper Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents.
-[![DOI](https://zenodo.org/badge/876027763.svg)](https://doi.org/10.5281/zenodo.14204495)
+
 
 ## Preparing environment
 
@@ -73,12 +73,4 @@ In our perceptual evaluation, we used the render procedure from the official GEN
 ## Cite
 
 If you with to cite this repo or the paper
-
-```text
-@article{tonoli2024stylistic,
-  author    = {Tonoli, Rodolfo L. and Costa, Paula D. P.},
-  title     = {Stylistic Co-Speech Gesture Generation: Modeling Personality and Communicative Styles in Virtual Agents},
-  journal   = {N/A},
-  year      = {N/A},
-}
-```
+[![DOI](https://zenodo.org/badge/876027763.svg)](https://doi.org/10.5281/zenodo.14204495)
